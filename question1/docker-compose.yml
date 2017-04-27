@@ -44,8 +44,6 @@ services:
   app:
     image: tuannvm/helloworld
     container_name: app
-    ports:
-      - "5000"
     environment:
       VIRTUAL_HOST: "hb.tuannvm.com"
       LETSENCRYPT_HOST: "hb.tuannvm.com"
