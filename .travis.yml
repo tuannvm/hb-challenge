@@ -16,6 +16,6 @@ deploy:
       branch: develop
   - provider: script
     skip_cleanup: true
-    script: ssh ubuntu@hb.tuannvm.com /srv/question/deploy.sh
+    script: ssh ubuntu@hb.tuannvm.com /srv/question1/deploy.sh
     on:
       branch: develop
