@@ -11,4 +11,4 @@ deploy:
     skip_cleanup: true
     script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/question1 ubuntu@hb.tuannvm.com:/srv/
     on:
-      branch: master
+      branch: develop
