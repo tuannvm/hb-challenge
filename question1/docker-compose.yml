@@ -1,0 +1,53 @@
+version: '2'
+
+services:
+  nginx:
+    image: nginx
+    build:
+      context: .
+      dockerfile: Dockerfile_nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/nginx/conf.d
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+      - ./certs/:/etc/nginx/certs:ro
+
+  nginx-gen:
+    image: jwilder/docker-gen
+    container_name: nginx-gen
+    depends_on:
+      - nginx
+    volumes_from:
+      - nginx
+    volumes:
+      - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    command: -notify-sighup nginx -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+
+  nginx-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: nginx-letsencrypt
+    depends_on:
+      - nginx-gen
+    volumes_from:
+      - nginx
+    volumes:
+      - ./certs/:/etc/nginx/certs:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      NGINX_DOCKER_GEN_CONTAINER: "nginx-gen"
+
+  app:
+    image: tuannvm/helloworld
+    container_name: app
+    ports:
+      - "5000"
+    environment:
+      VIRTUAL_HOST: "dev.kogi.io"
+      LETSENCRYPT_HOST: "hb.tuannvm.com"
+      LETSENCRYPT_EMAIL: "me@tuannvm.com"
+      VIRTUAL_PORT: "5000"

@@ -1,0 +1,2 @@
+FROM nginx
+ADD cors.conf /etc/nginx/conf.d/cors.conf
