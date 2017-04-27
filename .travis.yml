@@ -11,6 +11,11 @@ before_deploy:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/question1 ubuntu@hb.tuannvm.com:/srv/
+    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/question1 root@hb.tuannvm.com:/srv/
+    on:
+      branch: develop
+  - provider: script
+    skip_cleanup: true
+    script: ssh ubuntu@hb.tuannvm.com /srv/deploy.sh
     on:
       branch: develop
