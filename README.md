@@ -1,0 +1,1 @@
+Build status: [![Build Status](https://travis-ci.org/tuannvm/hb-challenge.svg?branch=develop)](https://travis-ci.org/tuannvm/hb-challenge)
