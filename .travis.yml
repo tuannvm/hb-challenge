@@ -1,3 +1,4 @@
+install: false
 addons:
   ssh_known_hosts: hb.tuannvm.com
 before_deploy:
