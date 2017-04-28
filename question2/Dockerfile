@@ -1,5 +1,7 @@
 FROM python:2-alpine
 
+MAINTAINER Tuan Nguyen <me@tuannvm.com>
+
 LABEL Name=pydock
 LABEL Version=1.0.0
 
@@ -10,10 +12,10 @@ ENV CLIENT_CERT ${CERTSDIR}/cert.pem
 ENV CLIENT_KEY ${CERTSDIR}/key.pem
 WORKDIR ${WORKDIR}
 
-ADD requirements_alpine.txt requirements.txt
+COPY requirements_alpine.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-ADD app.py .
+COPY app.py .
 
 ENTRYPOINT ["python", "app.py"]

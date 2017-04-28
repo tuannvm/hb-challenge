@@ -8,8 +8,8 @@ import argparse
 
 def pydock(**kwargs):
     """
-    pydock help you know which containers run on deprecated image    
-    :return: 
+    pydock help you know which containers run on deprecated image
+    :return:
     """
     # Initialize client
     try:
