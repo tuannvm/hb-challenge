@@ -50,4 +50,5 @@ services:
       VIRTUAL_HOST: "hb.tuannvm.com"
       LETSENCRYPT_HOST: "hb.tuannvm.com"
       LETSENCRYPT_EMAIL: "me@tuannvm.com"
+      LETSENCRYPT_TEST: true
       VIRTUAL_PORT: "5000"
