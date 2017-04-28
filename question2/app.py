@@ -99,9 +99,9 @@ if __name__ == '__main__':
 
     try:
         if results.tls:  # further check if additional argument are needed in case tls is enabled
-            assert (results.ca_file), '--tlscacert needs to be defined if --tlsverify was declared'
-            assert (results.client_cert), '--tlscert needs to be defined if --tlsverify was declared'
-            assert (results.client_key), '--tlskey needs to be defined if --tlsverify was declared'
+            assert results.ca_file, '--tlscacert needs to be defined if --tlsverify was declared'
+            assert results.client_cert, '--tlscert needs to be defined if --tlsverify was declared'
+            assert results.client_key, '--tlskey needs to be defined if --tlsverify was declared'
     except AssertionError as e:
         print e
         exit(1)
