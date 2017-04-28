@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  pydock:
+    image: pydock
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pydock
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock:ro
