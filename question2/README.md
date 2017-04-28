@@ -80,7 +80,7 @@ python app.py --tlsverify --tlscacert=<CA_PATH> \
 ```
 
 * Copy to `local PATH` for convenient usage (Optional):
-```apple js
+```bash
 mv app.py /usr/local/bin/pydock
 chmod +x /usr/local/bin/pydock
 ./pydock
