@@ -11,7 +11,6 @@ import json
 def get_image_digest(image_name, tag):
     """
     Help get remote image digest from dockerhub
-    
     :param image_name: image_name or repo_name to check 
     :param tag: image_tag (latest, develop, alpine...)
     :return: return string
