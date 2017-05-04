@@ -15,6 +15,7 @@ usage: app.py [-h] [-H SOCKET] [--tlsverify] [--tlscacert CA_FILE]
 optional arguments:
   -h, --help            show this help message and exit
   -H SOCKET             Define remote Docker host. E.g: tcp://<host>:<port>
+  --local               local check only
   --tlsverify           enable client TLS verification
   --tlscacert CA_FILE   Set CA pem file
   --tlscert CLIENT_CERT
@@ -25,10 +26,16 @@ optional arguments:
 
 #### Using pre-built docker image:
 
-```
+```bash
 # local environment
 docker run --rm -it \
 -v /var/run/docker.sock:/var/run/docker.sock tuannvm/pydock
+```
+
+```bash
+# check local image only
+docker run --rm -it \
+-v /var/run/docker.sock:/var/run/docker.sock tuannvm/pydock --local
 ```
 
 ```bash
@@ -42,6 +49,8 @@ docker run --rm -it -e "TLS=true" \
 -v <cert_dir>:/srv/certs/ tuannvm/pydock -H <host>:<port>
 
 ```
+
+
 
 #### Build and run with `docker-compose`:
 
